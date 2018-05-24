@@ -20,5 +20,6 @@
   :stop (web-server))
 
 (prn "Starting" (mount/start))
-(prn "HTTP request:")
-(prn (http/get "http://localhost:4321"))
+
+(comment
+  (http/get "http://localhost:4321"))
