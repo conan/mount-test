@@ -2,7 +2,8 @@
   (:require [clj-http.client :as http]
             [mount.core :as mount]
             [org.httpkit.server :as server]
-            [reitit.ring :as rr]))
+            [reitit.ring :as rr]
+            [clojure.spec.alpha :as s]))
 
 (defn app
   []
@@ -15,6 +16,10 @@
   [port]
   (println "Starting on port " port)
   (server/run-server (app) port))
+
+(s/fdef start
+  :args (s/cat :port int?)
+  :ret (s/fspec :args (s/cat)))
 
 (mount/defstate web-server
   :start (start 4321)
