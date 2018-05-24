@@ -13,13 +13,14 @@
 
 (defn start
   [port]
+  (println "Starting on port " port)
   (server/run-server (app) port))
 
 (mount/defstate web-server
   :start (start 4321)
   :stop (web-server))
 
-(prn "Starting" (mount/start))
+(prn (mount/start))
 
 (comment
   (http/get "http://localhost:4321"))
