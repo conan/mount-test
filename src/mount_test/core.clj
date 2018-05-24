@@ -15,7 +15,7 @@
 (defn start
   [port]
   (println "Starting on port " port)
-  (server/run-server (app) port))
+  (server/run-server (app) {:port port}))
 
 (s/fdef start
   :args (s/cat :port int?)
